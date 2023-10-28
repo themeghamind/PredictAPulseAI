@@ -1,7 +1,7 @@
-# Next.js + Contentlayer
+# PredictAPulseAI
 
-A template with Next.js 13 app dir, Contentlayer, Tailwind CSS and dark mode.
+Personalized AI health outcome predictor and insurance selection guide
 
-https://next-contentlayer.vercel.app
+Template: https://next-contentlayer.vercel.app
 
 
