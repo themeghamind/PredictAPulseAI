@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cockroach_example',
+    'backend',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cockroach_example.urls'
+# ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -70,11 +70,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cockroach_example.wsgi.application'
+# WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # load our ENV variables
 db_name = os.environ.get("DB_NAME")
