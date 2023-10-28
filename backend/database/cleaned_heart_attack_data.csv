@@ -1,4 +1,4 @@
-Patient ID,Age_encoded,Sex_encoded,Cholesterol_encoded,Smoking,BP_encoded,Diabetes,Obesity,Heart Attack Risk
+Patient_ID,Age_encoded,Sex_encoded,Cholesterol_encoded,Smoking,BP_encoded,Diabetes,Obesity,Heart_Attack_Risk
 BMW7812,1,1,1,1,1,0,0,0
 CZE1114,0,1,1,1,1,1,1,0
 BNI9906,0,0,1,0,1,1,0,0

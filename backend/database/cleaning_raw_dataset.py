@@ -40,8 +40,12 @@ filtered_data = filtered_data[
     ["Patient ID", "Age_encoded", "Sex_encoded", "Cholesterol_encoded", "Smoking", "BP_encoded", "Diabetes", "Obesity",
      "Heart Attack Risk"]]
 
+# rename columns so names don't have spaces
+filtered_data.rename(columns={'Patient ID': 'Patient_ID'}, inplace=True)
+filtered_data.rename(columns={'Heart Attack Risk': 'Heart_Attack_Risk'}, inplace=True)
+
 # shift heart attack risk column to the right most column
-column_order = [col for col in filtered_data.columns if col != 'Heart Attack Risk'] + ['Heart Attack Risk']
+column_order = [col for col in filtered_data.columns if col != 'Heart_Attack_Risk'] + ['Heart_Attack_Risk']
 filtered_data = filtered_data[column_order]
 
 print(filtered_data.head(30))
