@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Pycharm user settings
 .idea
+
+# ENV file
+.env
