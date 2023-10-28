@@ -27,13 +27,16 @@ filtered_data['BP_encoded'] = ((filtered_data['Systolic'] >= 130) | (filtered_da
 
 print(filtered_data[['Systolic', 'Diastolic', 'BP_encoded']].head(30))
 
+# grab new columns for the export dataframe
 filtered_data = filtered_data[
     ["Patient ID", "Age", "Sex", "Cholesterol_encoded", "Smoking", "BP_encoded", "Diabetes", "Obesity",
      "Heart Attack Risk"]]
 
+# shift heart attack risk column to the right most column
 column_order = [col for col in filtered_data.columns if col != 'Heart Attack Risk'] + ['Heart Attack Risk']
 filtered_data = filtered_data[column_order]
 
 print(filtered_data.head(30))
 
+# export dataframe to csv
 filtered_data.to_csv("cleaned_heart_attack_data.csv", index=False)
