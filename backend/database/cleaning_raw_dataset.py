@@ -27,9 +27,17 @@ filtered_data['BP_encoded'] = ((filtered_data['Systolic'] >= 130) | (filtered_da
 
 print(filtered_data[['Systolic', 'Diastolic', 'BP_encoded']].head(30))
 
+# one-hot encode the sex column so Male gets (1) and Female gets (0)
+filtered_data = filtered_data.assign(
+    Sex_encoded=filtered_data['Sex'].apply(lambda x: 1 if x == "Male" else 0))
+
+# one-hot encode the age column so age above 60 gets (1) and 60 and under gets (0)
+filtered_data = filtered_data.assign(
+    Age_encoded=filtered_data['Age'].apply(lambda x: 1 if x >= 60 else 0))
+
 # grab new columns for the export dataframe
 filtered_data = filtered_data[
-    ["Patient ID", "Age", "Sex", "Cholesterol_encoded", "Smoking", "BP_encoded", "Diabetes", "Obesity",
+    ["Patient ID", "Age_encoded", "Sex_encoded", "Cholesterol_encoded", "Smoking", "BP_encoded", "Diabetes", "Obesity",
      "Heart Attack Risk"]]
 
 # shift heart attack risk column to the right most column
