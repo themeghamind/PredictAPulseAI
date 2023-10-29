@@ -45,6 +45,13 @@ export default function Questions() {
             types={fileTypes}  
           /> 
       </div>
+        <div className="mt-10">
+          <Link href="/fileupload">
+            <button className="px-4 py-2 text-white bg-red-800 rounded hover:bg-red-600 focus:outline-none focus:ring">
+              Next
+            </button>
+          </Link>
+        </div>
       </main>
     </div>
   )
