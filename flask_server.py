@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from tesseract import transcribe
 import requests
 import json
 
@@ -28,6 +29,22 @@ def check_risk():
         return jsonify({'risk_score': risk_value})
     else:
         return jsonify({'error': 'Failed to retrieve risk score'})
+
+@app.route('/tesseract', methods=['POST'])
+def tesseract_reader():
+    url1 = request.args.get('url1')
+    url2 = request.args.get('url2')
+
+    transcribe(url1)
+    transcribe(url2)
+
+    # Open and read the contents of the output.txt file
+    with open("output.txt", "r") as file:
+        content = file.read()
+
+    return jsonify({"output": content})
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6666)
