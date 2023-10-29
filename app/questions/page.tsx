@@ -89,7 +89,7 @@ export default function Questions() {
             </div>
           </div>
           <div className="flex items-center justify-between mb-10 mt-4">
-            <label className="text-xl font-sans text-gray-600">Do you have high blood pressure (above 130 mm Hg/80 mm Hg)?</label>
+            <label className="text-xl font-sans text-gray-600">Do you have high blood pressure (above 130/80 mm Hg)?</label>
             <div className="flex items-center gap-4">
               <input type="checkbox" name="bp" value="yes" style={{ transform: 'scale(1.3)' }}
                      checked={checkboxValues.bp}
@@ -113,7 +113,7 @@ export default function Questions() {
             </div>
           </div>
           <div className="flex items-center justify-between mb-10 mt-4">
-            <label className="text-xl font-sans text-gray-600">Has your physician informed you have an abnormal ECG reading?</label>
+            <label className="text-xl font-sans text-gray-600">Have you ever received an abnormal ECG reading?</label>
             <div className="flex items-center gap-4">
               <input type="checkbox" name="ecg" value="yes" style={{ transform: 'scale(1.3)' }}
                      checked={checkboxValues.ecg}
