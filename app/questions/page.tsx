@@ -78,6 +78,9 @@ export default function Questions() {
                         sx={{
                             '& .MuiToggleButton-root': {
                                 borderRadius: '0.5rem !important',
+                                '&:first-of-type': {
+                                    borderTop: 'none',
+                                },
                             },
                             '& .MuiToggleButton-root:first-of-type': {
                                 borderTopLeftRadius: '0.5rem !important',
