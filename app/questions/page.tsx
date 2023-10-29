@@ -2,6 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import * as React from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 
 export default function Questions() {
     return (
@@ -31,12 +35,12 @@ export default function Questions() {
         </div>
         <div>
           <h2 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert text-4xl font-sans font-semibold text-center bg-red-800 bg-clip-text text-transparent leading-tight">
-            Check either &rsquo;yes&rsquo; or &rsquo;no&rsquo; for each question
+            Check &rsquo;yes&rsquo; for each question that applies to you.
           </h2>
         </div>
         <div className="mt-10 w-3/6">
           <div className="flex items-center justify-between mb-10">
-            <label className="text-xl font-sans text-gray-600">Are you male?</label>
+            <label className="text-xl font-sans text-gray-600">Are you 55 years or older?</label>
             <div className="flex items-center gap-4">
               <input type="checkbox" name="Gender" value="yes" style={{ transform: 'scale(1.3)' }}/>
             </div>
