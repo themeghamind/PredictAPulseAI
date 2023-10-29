@@ -14,7 +14,7 @@ The American Healthcare system is expensive and complicated. Everyone wants the 
 PredictAPulseAI provides users with a health questionnaire, where the answers serve as input for an ML model for heart attack risk classification. Our ML model was trained using a dataset that has features for causes of heart attacks and predicts future heart attacks. Afterward, users upload summary benefits of insurance policies to PredictAPulseAI, and it combines all of this data to find the most cost-effective insurance policy given your risk for heart attacks.
 
 ## How we built it
-Frontend: JS, React, Next.js, TypeScript, HTML/CSS  
+Frontend: JS, React, Next.js, TypeScript, HTML/CSS, Material UI  
 Backend: Python, Flask, MindsDB.api, Tesseract OCR, Open AI GPT (3.5)  
 Database: SQL, CockroachDB  
 Classification Model: Heart Attack Kaggle Dataset, MindsDB
