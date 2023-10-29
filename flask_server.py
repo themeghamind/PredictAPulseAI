@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from tesseract import transcribe
 import requests
 import json
+import os
+import openai
 
 app = Flask(__name__)
 
@@ -26,6 +28,13 @@ def check_risk():
     if risk_score.status_code == 200:
         response_data = json.loads(risk_score.text)
         risk_value = response_data["data"][0][0] if "data" in response_data else None
+
+        with open("risk.txt", "a") as f:
+            if risk_value == 1:
+                f.write("This patient has a high probability of suffering a heart attack in the near future.")
+            elif risk_value == 0:
+                f.write("This patient has a low probability of suffering a heart attack in the near future. They have very little to worry about.")
+
         return jsonify({'risk_score': risk_value})
     else:
         return jsonify({'error': 'Failed to retrieve risk score'})
@@ -44,7 +53,23 @@ def tesseract_reader():
 
     return jsonify({"output": content})
 
+@app.route('/retrieverecs', methods=['GET'])
+def retrieve_recommendations():
+    with open("risk.txt", "r") as file:
+        risk = file.read()
 
+    with open("output.txt", "a") as f:
+        f.write(risk)
+        output_all = f.read()
+
+    prompt = f"This is some information about a patient: {output_all}. This information includes information about two prospective health insurance plans they have access to and whether or not they have a high likelihood of suffering a heart attack. Considering the terms in both health insurance plans, which one should the user choose to save money? Respond ONLY with the name of the insurance plan and clear reasons why to. If both plans are equally economical, explain the pros and cons of both plans."
+    openai.api_key = os.getenv("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")
+    openai.Completion.create(
+    model="gpt-3.5-turbo-instruct",
+    prompt=prompt,
+    max_tokens=100,
+    temperature=0
+)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6666)
