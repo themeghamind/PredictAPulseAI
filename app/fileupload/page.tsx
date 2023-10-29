@@ -46,7 +46,7 @@ export default function Questions() {
           /> 
       </div>
         <div className="mt-10">
-          <Link href="/fileupload">
+          <Link href="/buffer">
             <button className="px-4 py-2 text-white bg-red-800 rounded hover:bg-red-600 focus:outline-none focus:ring">
               Next
             </button>
