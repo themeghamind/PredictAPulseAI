@@ -10,10 +10,8 @@ const fileTypes = ["PNG", "JPG"];
 export default function Questions() {
     const [files, setFiles] = useState<File[]>([]);
 
-    // State to manage drag active state
     const [dragActive, setDragActive] = useState(false);
 
-    // Ref for the file input
     const inputRef = useRef<HTMLInputElement>(null);
 
     function handleChange(e: any) {
