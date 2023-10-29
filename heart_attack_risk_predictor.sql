@@ -1,4 +1,4 @@
-CREATE DATABASE cockroachdb_derek4
+CREATE DATABASE cockroachdb_derek5
 WITH
     engine = 'cockroachdb',
     parameters = {
@@ -9,21 +9,19 @@ WITH
         "port": "26257"
     };
 
-CREATE MODEL mindsdb.heart_attack_risk_predictor_derek4
-FROM cockroachdb_derek4
+CREATE MODEL mindsdb.heart_attack_risk_predictor_derek5
+FROM cockroachdb_derek5
   (SELECT * FROM heartattackpredictor)
 PREDICT heart_attack_risk;
 
-DESCRIBE mindsdb.heart_attack_risk_predictor_derek4;
+DESCRIBE mindsdb.heart_attack_risk_predictor_derek5;
 
-SELECT * FROM cockroachdb_derek4.heartattackpredictor;
+SELECT * FROM cockroachdb_derek5.heartattackpredictor;
 
 SELECT heart_attack_risk
-FROM mindsdb.heart_attack_risk_predictor_derek4
-WHERE age_encoded=0
-AND sex_encoded=0
-AND cholesterol_encoded=0
-AND smoking=0
-AND bp_encoded=0
-AND diabetes=0
-AND obesity=0;
+FROM mindsdb.heart_attack_risk_predictor_derek5
+WHERE age_encoded=1
+AND sex_encoded=1
+AND cp_encoded=1
+AND restecg_encoded=1
+AND exng_encoded=1;
