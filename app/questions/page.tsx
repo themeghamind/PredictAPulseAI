@@ -252,7 +252,7 @@ export default function Questions() {
                                 fontSize: '1.25rem',
                                 textTransform: 'none',
                                 margin: '1.8rem 0',
-                                backgroundColor: 'rgba(255, 179, 179, 1)',
+                                backgroundColor: 'white',
                                 color: 'rgba(51, 51, 51, 1)',
                                 '&.Mui-selected': {
                                     backgroundColor: 'rgba(204, 51, 0, 1)',
