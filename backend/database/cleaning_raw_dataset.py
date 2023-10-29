@@ -23,7 +23,7 @@ print(filtered_data[['Blood Pressure', 'Systolic', 'Diastolic']].head())
 
 # one-hot encode the blood pressure based on the following: if the row has high blood pressure (1),
 # otherwise, encode (0)
-filtered_data['BP_encoded'] = ((filtered_data['Systolic'] >= 130) | (filtered_data['Diastolic'] >= 80)).astype(int)
+filtered_data['BP_encoded'] = ((filtered_data['Systolic'] >= 135) | (filtered_data['Diastolic'] >= 85)).astype(int)
 
 print(filtered_data[['Systolic', 'Diastolic', 'BP_encoded']].head(30))
 
@@ -31,9 +31,9 @@ print(filtered_data[['Systolic', 'Diastolic', 'BP_encoded']].head(30))
 filtered_data = filtered_data.assign(
     Sex_encoded=filtered_data['Sex'].apply(lambda x: 1 if x == "Male" else 0))
 
-# one-hot encode the age column so age above 60 gets (1) and 60 and under gets (0)
+# one-hot encode the age column so age above 70 gets (1) and 70 and under gets (0)
 filtered_data = filtered_data.assign(
-    Age_encoded=filtered_data['Age'].apply(lambda x: 1 if x >= 60 else 0))
+    Age_encoded=filtered_data['Age'].apply(lambda x: 1 if x >= 70 else 0))
 
 # grab new columns for the export dataframe
 filtered_data = filtered_data[
@@ -49,6 +49,18 @@ column_order = [col for col in filtered_data.columns if col != 'Heart_Attack_Ris
 filtered_data = filtered_data[column_order]
 
 print(filtered_data.head(30))
+
+# create correlation matrix for feature selection
+filtered_data = filtered_data[
+    ["Age_encoded", "Sex_encoded", "Cholesterol_encoded", "Smoking", "BP_encoded", "Diabetes", "Obesity",
+     "Heart_Attack_Risk"]]
+print(filtered_data.corr())
+
+# feature selection
+filtered_data = filtered_data[
+    ["Age_encoded", "Cholesterol_encoded", "BP_encoded", "Diabetes",
+     "Heart_Attack_Risk"]]
+print(filtered_data.corr())
 
 # export dataframe to csv
 filtered_data.to_csv("cleaned_heart_attack_data.csv", index=False)
