@@ -36,7 +36,7 @@ export default function Home() {
           <h2 className="font-sans text-red-800 text-lg">
             We help you cut the crap from health insurance policies <br/>
             and choose something that suits your needs - not your employer&rsquo;s <br/>
-            or your insurance company&rsquo;s, but your wallet's!
+            or your insurance company&rsquo;s, but your wallet&rsquo;s!
           </h2>
         </div>
         <div className="mt-16">
