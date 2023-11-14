@@ -52,7 +52,7 @@ export default function Questions() {
                         height={12}
                         priority
                     />
-                    <h1 className="text-3xl font-sans font-semibold text-red-700">PredictAPulseAI</h1>
+                    <h1 className="text-3xl font-sans font-semibold text-red-700">InsuraComp</h1>
                 </a>
             </header>
             <main className="flex min-h-screen flex-col items-center justify-center p-24 mt-8">
@@ -63,7 +63,7 @@ export default function Questions() {
                     </h1>
                 </div>
                 <div>
-                    <h2 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert text-4xl font-sans font-semibold text-center bg-red-800 bg-clip-text text-transparent leading-tight">
+                    <h2 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert text-4xl font-sans text-center bg-red-800 bg-clip-text text-transparent leading-tight">
                         Select each question if it applies to you
                     </h2>
                 </div>

@@ -32,7 +32,7 @@ export default function Home() {
                         height={12}
                         priority
                     />
-                    <h1 className="text-3xl font-sans font-semibold text-red-700">PredictAPulseAI</h1>
+                    <h1 className="text-3xl font-sans font-semibold text-red-700">InsuraComp</h1>
                 </a>
             </header>
             <main className="flex min-h-screen flex-col items-center justify-center p-24 mt-8">
