@@ -3,9 +3,69 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from "next/navigation"
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
     const router = useRouter()
+    const [serverResponse, setServerResponse] = useState('');
+
+    async function postData(url, body) {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Include other headers if necessary
+          },
+          body: JSON.stringify(body),
+        });
+        if (!response.ok) {
+          console.log(response.status, response)
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      }
+
+    // Function to make GET requests
+    async function getData(url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            // Make POST request to /checkrisk
+            await postData('http://predictapulseai.ngrok.app/checkrisk', {
+              age_encoded: 1,
+              sex_encoded: 0,
+              cp_encoded: 1,
+              restecg_encoded: 1,
+              exng_encoded: 1,
+            });
+    
+            // Make POST request to /tesseract
+            await postData('http://predictapulseai.ngrok.app/tesseract', {
+              url1: 'https://predictapulse2.ngrok.app/kaiser.png',
+              url2: 'https://predictapulse2.ngrok.app/kaiser.png',
+            });
+    
+            // Make GET request to /retrieverecs and store the response
+            const data = await getData('http://predictapulseai.ngrok.app/retrieverecs');
+            setServerResponse(data);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            setServerResponse('Failed to fetch data');
+          }
+        }
+    
+        fetchData();
+    }, []);
+    
+
+
     return (
         <div>
             <header style={{ paddingTop: '30px', paddingLeft: '80px' }}>
@@ -30,6 +90,10 @@ export default function Home() {
                     <h1 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert text-7xl font-sans font-semibold text-center bg-gradient-to-r from-red-400 to-red-800 bg-clip-text text-transparent leading-tight">
                         Your Results <br/>
                     </h1>
+                    {/* Display server response */}
+                </div>
+                <div>
+                    <h2>{typeof serverResponse === 'string' ? serverResponse : JSON.stringify(serverResponse)}</h2>
                 </div>
                 <div>
                     <h2 className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert text-2xl font-sans font-semibold text-center bg-gradient-to-r from-red-400 to-red-800 bg-clip-text text-transparent leading-tight">
