@@ -2,7 +2,7 @@
 
 Personalized AI health outcome predictor and insurance selection guide
 
-![PredictAPulseAI]()
+![PredictAPulseAI](https://github.com/themeghamind/PredictAPulseAI/assets/57309755/0b1b5bf5-fbd0-48f2-b8dc-38d8942e0cb2)
 
 ## Inspiration
 The American Healthcare system is expensive and complicated. Everyone wants the best, most cost-effective insurance plan, but choosing one can feel like a daunting task. We were motivated to build a product that could deal with large benefits summaries containing opaque language and support our users' unique medical needs, all the while maintaining a high level of user personalization.
