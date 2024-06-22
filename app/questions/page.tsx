@@ -1,20 +1,18 @@
 "use client"
 
-import React, {useState} from 'react';
-import Image from 'next/image'
-import Link from 'next/link'
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useRouter } from 'next/navigation';
 
 export default function Questions() {
+    const router = useRouter();
     const [checkboxValues, setCheckboxValues] = useState({
         gender: false,
         age: false,
         chol: false,
         bp: false,
-        chest_pains: false,
-        chest_pains_exercise: false,
-        ecg: false,
     });
 
     const handleCheckboxChange = (event: React.MouseEvent<HTMLElement>, newValue: string[]) => {
@@ -23,9 +21,6 @@ export default function Questions() {
             age: false,
             chol: false,
             bp: false,
-            chest_pains: false,
-            chest_pains_exercise: false,
-            ecg: false,
         };
 
         newValue.forEach(name => {
@@ -33,15 +28,19 @@ export default function Questions() {
         });
 
         setCheckboxValues(updatedValues);
-        console.log(updatedValues);
+        localStorage.setItem("checkbox_values", JSON.stringify(updatedValues));
+    };
+
+    const handleSubmit = async () => {
+        router.push('/fileupload')
     };
 
     return (
         <div>
             <header style={{paddingTop: '30px', paddingLeft: '80px'}}>
                 <a
-                    className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-                    target="_blank"
+                    href="http://localhost:3000"
+                    className="flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
                     rel="noopener noreferrer"
                 >
                     <Image
@@ -193,94 +192,18 @@ export default function Questions() {
                         >
                             Do you have high blood pressure (above 130/80 mm Hg)?
                         </ToggleButton>
-                        <ToggleButton
-                            value="chest_pains"
-                            name="chest_pains"
-                            aria-label="Do you experience chest pains?"
-                            sx={{
-                                borderRadius: '0.5rem',
-                                fontSize: '1.25rem',
-                                textTransform: 'none',
-                                margin: '1.8rem 0',
-                                backgroundColor: 'white',
-                                color: 'rgba(51, 51, 51, 1)',
-                                '&.Mui-selected': {
-                                    backgroundColor: 'rgba(204, 51, 0, 1)',
-                                    color: 'rgba(255, 255, 255, 1)',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(183, 46, 0, 1)',
-                                    }
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 159, 159, 1)',
-                                }
-                            }}
-                        >
-                            Do you experience chest pains?
-                        </ToggleButton>
-                        <ToggleButton
-                            value="chest_pains_exercise"
-                            name="chest_pains_exercise"
-                            aria-label="Do you experience chest pains post-exercise?"
-                            sx={{
-                                borderRadius: '0.5rem',
-                                fontSize: '1.25rem',
-                                textTransform: 'none',
-                                margin: '1.8rem 0',
-                                backgroundColor: 'white',
-                                color: 'rgba(51, 51, 51, 1)',
-                                '&.Mui-selected': {
-                                    backgroundColor: 'rgba(204, 51, 0, 1)',
-                                    color: 'rgba(255, 255, 255, 1)',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(183, 46, 0, 1)',
-                                    }
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 159, 159, 1)',
-                                }
-                            }}
-                        >
-                            Do you experience chest pains post-exercise?
-                        </ToggleButton>
-                        <ToggleButton
-                            value="ecg"
-                            name="ecg"
-                            aria-label="Have you ever received an abnormal ECG reading?"
-                            sx={{
-                                borderRadius: '0.5rem',
-                                fontSize: '1.25rem',
-                                textTransform: 'none',
-                                margin: '1.8rem 0',
-                                backgroundColor: 'white',
-                                color: 'rgba(51, 51, 51, 1)',
-                                '&.Mui-selected': {
-                                    backgroundColor: 'rgba(204, 51, 0, 1)',
-                                    color: 'rgba(255, 255, 255, 1)',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(183, 46, 0, 1)',
-                                    }
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 159, 159, 1)',
-                                }
-                            }}
-                        >
-                            Have you ever received an abnormal ECG reading?
-                        </ToggleButton>
                     </ToggleButtonGroup>
                 </div>
 
                 <div className="mt-5">
-                    <Link href="/fileupload">
-                        <button
-                            className="px-4 py-2 text-white bg-red-800 rounded hover:bg-red-600 focus:outline-none focus:ring">
-                            Next
-                        </button>
-                    </Link>
+                    <button
+                        className="px-4 py-2 text-white bg-red-800 rounded hover:bg-red-600 focus:outline-none focus:ring"
+                        onClick={handleSubmit}
+                    >
+                        Next
+                    </button>
                 </div>
             </main>
         </div>
-
-    )
+    );
 }
