@@ -40,3 +40,9 @@ next-env.d.ts
 
 # ENV file
 .env
+
+# venv
+venv/
+
+# vscode
+.vscode/

@@ -2,10 +2,7 @@
 
 Personalized AI health outcome predictor and insurance selection guide
 
-Deployed Website: https://predict-a-pulse-ai-rofr.vercel.app/
-
-![PredictAPulseAI](https://github.com/themeghamind/PredictAPulseAI/assets/57195399/ec00b035-95b1-410a-a5c7-0d3e997e47ad)
-
+![PredictAPulseAI]()
 
 ## Inspiration
 The American Healthcare system is expensive and complicated. Everyone wants the best, most cost-effective insurance plan, but choosing one can feel like a daunting task. We were motivated to build a product that could deal with large benefits summaries containing opaque language and support our users' unique medical needs, all the while maintaining a high level of user personalization.
@@ -14,10 +11,10 @@ The American Healthcare system is expensive and complicated. Everyone wants the 
 PredictAPulseAI provides users with a health questionnaire, where the answers serve as input for an ML model for heart attack risk classification. Our ML model was trained using a dataset that has features for causes of heart attacks and predicts future heart attacks. Afterward, users upload summary benefits of insurance policies to PredictAPulseAI, and it combines all of this data to find the most cost-effective insurance policy given your risk for heart attacks.
 
 ## How we built it
-Frontend: JS, React, Next.js, TypeScript, HTML/CSS, Material UI, Vercel
-Backend: Python, Flask, MindsDB.api, Tesseract OCR, Open AI GPT (3.5)  
-Database: SQL, CockroachDB  
-Classification Model: Heart Attack Kaggle Dataset, MindsDB
+Frontend: JS, React, Next.js, TypeScript, HTML/CSS, Material UI, Vercel  
+Backend: Python, FastAPI, MindsDB.api, Tesseract OCR, OpenAI GPT 3.5  
+Database: CockroachDB  
+Classification Model: Heart Attack Kaggle Dataset, MindsDB Regression-Based Predictor
 
 ## Challenges we ran into
 Some of the challenges we ran into were dealing with the limitations of Intel Cloud, specifically its inability to connect to Cockroach DB and port-forward for our custom backend API.
